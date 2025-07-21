@@ -1,4 +1,5 @@
 import { Grid, GridItem, useBreakpointValue } from '@chakra-ui/react';
+import NavBar from './components/NavBar';
 
 const App = () => {
   const showAside = useBreakpointValue({ base: false, lg: true });
@@ -11,7 +12,7 @@ const App = () => {
       }}
     >
       <GridItem area="nav" bg="coral">
-        Nav
+        <NavBar />
       </GridItem>
 
       {showAside && (
