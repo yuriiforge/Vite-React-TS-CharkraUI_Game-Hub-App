@@ -1,4 +1,4 @@
-export type GameResponse = {
+export type GamesResponse = {
   count: number;
   results: Game[];
   next: string;
