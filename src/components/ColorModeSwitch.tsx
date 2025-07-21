@@ -3,8 +3,8 @@ import { ColorModeButton } from './ui/color-mode';
 
 const ColorModeSwitch = () => {
   return (
-    <HStack as="nav">
-      <ColorModeButton marginStart="auto" />
+    <HStack>
+      <ColorModeButton marginStart="auto" padding={4} />
       <Text>Dark Mode</Text>
     </HStack>
   );
