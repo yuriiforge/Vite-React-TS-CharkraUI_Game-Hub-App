@@ -5,9 +5,10 @@ import { Button, HStack, Image, List, Spinner } from '@chakra-ui/react';
 
 interface GenreListProps {
   onSelectGenre: (genre: Genre) => void;
+  selectedGenre: Genre | null;
 }
 
-const GenreList = ({ onSelectGenre }: GenreListProps) => {
+const GenreList = ({ onSelectGenre, selectedGenre }: GenreListProps) => {
   const { data: genres, isLoading, error } = useGenres();
 
   if (error) return null;
@@ -25,6 +26,7 @@ const GenreList = ({ onSelectGenre }: GenreListProps) => {
               borderRadius={8}
             />
             <Button
+              fontWeight={genre.id === selectedGenre?.id ? 'bold' : 'normal'}
               variant="ghost"
               fontSize="large"
               onClick={() => onSelectGenre(genre)}
