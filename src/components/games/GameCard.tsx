@@ -22,13 +22,13 @@ const GameCard = ({ game }: GameCardProps) => {
           />
         </AspectRatio>
         <Card.Body>
-          <Heading fontSize="2xl">{game.name}</Heading>
-          <HStack justifyContent="space-between">
+          <HStack justifyContent="space-between" mb={3}>
             <PlatformIconList
               platforms={game.platforms.map((p) => p.platform)}
             />
-            <CriticScore score={game.metacritic || '?'} />
+            <CriticScore score={game.metacritic} />
           </HStack>
+          <Heading fontSize="2xl">{game.name}</Heading>
         </Card.Body>
       </Card.Root>
     </GameCardContainer>
