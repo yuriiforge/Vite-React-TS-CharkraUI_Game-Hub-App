@@ -27,7 +27,7 @@ const GameCard = ({ game }: GameCardProps) => {
             <PlatformIconList
               platforms={game.platforms.map((p) => p.platform)}
             />
-            <CriticScore score={game.metacritic} />
+            <CriticScore score={game.metacritic || '?'} />
           </HStack>
         </Card.Body>
       </Card.Root>

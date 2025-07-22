@@ -22,7 +22,7 @@ const SortSelector = ({ onSelectSortOrder, sortOrder }: SortSelectorProps) => {
   return (
     <Menu.Root>
       <Menu.Trigger asChild>
-        <Button variant="outline" size="sm">
+        <Button variant="surface" size="lg">
           Order by {currentSortOrder?.label || 'Relevance'} ▼
         </Button>
       </Menu.Trigger>

@@ -19,7 +19,7 @@ const Platformselector = ({
   return (
     <Menu.Root>
       <Menu.Trigger asChild>
-        <Button variant="outline" size="sm">
+        <Button variant="surface" size="lg">
           <HiCog /> {selectedPlatform ? selectedPlatform.name : 'Platforms'} ▼
         </Button>
       </Menu.Trigger>
