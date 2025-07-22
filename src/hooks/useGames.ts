@@ -1,14 +1,16 @@
 import { routes } from '@/routes';
-import type { Game, Platform } from '@/types/games';
+import type { Game } from '@/types/games';
 import { useData } from './useData';
-import type { Genre } from '@/types/genres';
+import type { GameQuery } from '@/App';
 
-export const useGames = (
-  selectedGenre: Genre | null,
-  selectedPlatform: Platform | null
-) =>
+export const useGames = (gameQuery: GameQuery) =>
   useData<Game>(
     routes.games,
-    { params: { genres: selectedGenre?.id, platforms: selectedPlatform?.id } },
-    [selectedGenre?.id, selectedPlatform?.id]
+    {
+      params: {
+        genres: gameQuery.genre?.id,
+        platforms: gameQuery.platform?.id,
+      },
+    },
+    [gameQuery]
   );
