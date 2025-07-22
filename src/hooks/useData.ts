@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 export const useData = <T>(
   endpoint: RoutePath,
   requestConfig?: AxiosRequestConfig,
-  deps?: any[]
+  deps?: unknown[]
 ) => {
   const [data, setData] = useState<T[] | null>(null);
   const [isLoading, setLoading] = useState(false);
