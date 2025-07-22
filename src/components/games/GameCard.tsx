@@ -1,5 +1,5 @@
 import type { Game } from '@/types/games';
-import { Card, HStack, Heading, Image } from '@chakra-ui/react';
+import { AspectRatio, Card, HStack, Heading, Image } from '@chakra-ui/react';
 import PlatformIconList from './PlatformIconList';
 import CriticScore from './CriticScore';
 import getCroppedImageUrl from '@/utils/image-url';
@@ -13,13 +13,14 @@ const GameCard = ({ game }: GameCardProps) => {
   return (
     <GameCardContainer>
       <Card.Root bg="cardBg" boxShadow="md">
-        <Image
-          src={getCroppedImageUrl(game.background_image)}
-          alt={game.name}
-          objectFit="cover"
-          width="100%"
-          height="200px"
-        />
+        <AspectRatio ratio={16 / 9}>
+          <Image
+            src={getCroppedImageUrl(game.background_image)}
+            alt={game.name}
+            objectFit="cover"
+            borderTopRadius="lg"
+          />
+        </AspectRatio>
         <Card.Body>
           <Heading fontSize="2xl">{game.name}</Heading>
           <HStack justifyContent="space-between">

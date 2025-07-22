@@ -10,12 +10,16 @@ const App = () => {
         base: `"nav" "main"`,
         lg: `"nav nav" "aside main"`,
       }}
+      templateColumns={{
+        base: '1ft',
+        lg: '200px 1fr',
+      }}
     >
       <GridItem area="nav">
         <NavBar />
       </GridItem>
 
-      <GridItem area="aside" hideBelow="lg">
+      <GridItem area="aside" hideBelow="lg" paddingX={5}>
         <GenreList />
       </GridItem>
 
