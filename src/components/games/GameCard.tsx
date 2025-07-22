@@ -3,6 +3,7 @@ import { Card, HStack, Heading, Image } from '@chakra-ui/react';
 import PlatformIconList from './PlatformIconList';
 import CriticScore from './CriticScore';
 import getCroppedImageUrl from '@/utils/image-url';
+import GameCardContainer from './GameCardContainer';
 
 interface GameCardProps {
   game: Game;
@@ -10,32 +11,26 @@ interface GameCardProps {
 
 const GameCard = ({ game }: GameCardProps) => {
   return (
-    <Card.Root
-      width="450px"
-      borderRadius={10}
-      overflow="hidden"
-      bg="cardBg"
-      boxShadow="md"
-      _hover={{
-        transform: 'scale(1.03)',
-        transition: 'transform .15s ease-in',
-      }}
-    >
-      <Image
-        src={getCroppedImageUrl(game.background_image)}
-        alt={game.name}
-        objectFit="cover"
-        width="100%"
-        height="200px"
-      />
-      <Card.Body>
-        <Heading fontSize="2xl">{game.name}</Heading>
-        <HStack justifyContent="space-between">
-          <PlatformIconList platforms={game.platforms.map((p) => p.platform)} />
-          <CriticScore score={game.metacritic} />
-        </HStack>
-      </Card.Body>
-    </Card.Root>
+    <GameCardContainer>
+      <Card.Root bg="cardBg" boxShadow="md">
+        <Image
+          src={getCroppedImageUrl(game.background_image)}
+          alt={game.name}
+          objectFit="cover"
+          width="100%"
+          height="200px"
+        />
+        <Card.Body>
+          <Heading fontSize="2xl">{game.name}</Heading>
+          <HStack justifyContent="space-between">
+            <PlatformIconList
+              platforms={game.platforms.map((p) => p.platform)}
+            />
+            <CriticScore score={game.metacritic} />
+          </HStack>
+        </Card.Body>
+      </Card.Root>
+    </GameCardContainer>
   );
 };
 
