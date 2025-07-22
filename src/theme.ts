@@ -6,6 +6,14 @@ import {
 
 const config = defineConfig({
   theme: {
+    breakpoints: {
+      base: '0px',
+      sm: '480px',
+      md: '768px',
+      lg: '992px',
+      xl: '1280px',
+      '2xl': '1536px',
+    },
     tokens: {
       colors: {},
     },
@@ -34,6 +42,14 @@ const config = defineConfig({
             value: {
               _light: '{colors.gray.200}',
               _dark: '#111111',
+            },
+          },
+        },
+        cardBg: {
+          DEFAULT: {
+            value: {
+              _light: '{colors.white}',
+              _dark: '#2f2f2f',
             },
           },
         },

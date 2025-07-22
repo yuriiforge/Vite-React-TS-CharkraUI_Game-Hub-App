@@ -3,7 +3,7 @@ import { ColorModeButton } from './ui/color-mode';
 
 const ColorModeSwitch = () => {
   return (
-    <HStack>
+    <HStack borderRadius="full">
       <ColorModeButton marginStart="auto" padding={4} />
       <Text>Dark Mode</Text>
     </HStack>
