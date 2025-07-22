@@ -1,9 +1,6 @@
-export type GamesResponse = {
-  count: number;
-  results: Game[];
-  next: string;
-  previous: string;
-};
+import type { ApiResponse } from './apiResponse';
+
+export type GamesResponse = ApiResponse<Game>;
 
 export type Game = {
   id: number;

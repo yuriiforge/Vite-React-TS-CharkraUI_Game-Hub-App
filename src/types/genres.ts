@@ -1,9 +1,6 @@
-export type GenresResponse = {
-  count: number;
-  next: string;
-  previous: string;
-  results: Genre[];
-};
+import type { ApiResponse } from './apiResponse';
+
+export type GenresResponse = ApiResponse<Genre>;
 
 export type Genre = {
   id: number;
