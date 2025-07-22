@@ -1,34 +1,43 @@
 import type { RoutePath } from '@/routes';
 import apiClient from '@/services/api-client';
 import type { ApiResponse } from '@/types/apiResponse';
-import axios from 'axios';
+import axios, { type AxiosRequestConfig } from 'axios';
 import { useEffect, useState } from 'react';
 
-export const useData = <T>(endpoint: RoutePath) => {
+export const useData = <T>(
+  endpoint: RoutePath,
+  requestConfig?: AxiosRequestConfig,
+  deps?: any[]
+) => {
   const [data, setData] = useState<T[] | null>(null);
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const response = await apiClient.get<ApiResponse<T>>(endpoint);
-        setData(response.data.results);
-        setError('');
-      } catch (error) {
-        if (axios.isCancel(error)) {
-          console.log('Request canceled:', error.message);
-        } else {
-          setError('Error occurred');
+  useEffect(
+    () => {
+      const fetchData = async () => {
+        setLoading(true);
+        try {
+          const response = await apiClient.get<ApiResponse<T>>(endpoint, {
+            ...requestConfig,
+          });
+          setData(response.data.results);
+          setError('');
+        } catch (error) {
+          if (axios.isCancel(error)) {
+            console.log('Request canceled:', error.message);
+          } else {
+            setError('Error occurred');
+          }
+        } finally {
+          setLoading(false);
         }
-      } finally {
-        setLoading(false);
-      }
-    };
+      };
 
-    fetchData();
-  }, []);
+      fetchData();
+    },
+    deps ? [...deps] : []
+  );
 
   return { data, error, isLoading };
 };
