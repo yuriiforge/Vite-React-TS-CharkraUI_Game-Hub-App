@@ -1,5 +1,7 @@
-import { routes } from '@/routes';
-import type { Genre } from '@/types/genres';
-import { useData } from './useData';
+import genres from '../data/genres';
 
-export const useGenres = () => useData<Genre>(routes.genres);
+export const useGenres = () => ({
+  data: genres,
+  isLoading: false,
+  error: null,
+});
