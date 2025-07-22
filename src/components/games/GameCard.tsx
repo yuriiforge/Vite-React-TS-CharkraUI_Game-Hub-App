@@ -2,7 +2,7 @@ import type { Game } from '@/types/games';
 import { Card, HStack, Heading, Image } from '@chakra-ui/react';
 import PlatformIconList from './PlatformIconList';
 import CriticScore from './CriticScore';
-import getCroppedImageUrl from '@/services/image-url';
+import getCroppedImageUrl from '@/utils/image-url';
 
 interface GameCardProps {
   game: Game;
@@ -11,6 +11,7 @@ interface GameCardProps {
 const GameCard = ({ game }: GameCardProps) => {
   return (
     <Card.Root
+      width="450px"
       borderRadius={10}
       overflow="hidden"
       bg="cardBg"
