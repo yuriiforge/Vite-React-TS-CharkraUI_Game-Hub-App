@@ -13,6 +13,7 @@ export const useGames = () => {
       const fetchData = async () => {
         const response = await apiClient.get<GamesResponse>(routes.games);
         const data = response.data;
+        console.log(data.results);
         setGames(data.results);
       };
       fetchData();

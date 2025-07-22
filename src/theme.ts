@@ -48,7 +48,7 @@ const config = defineConfig({
         cardBg: {
           DEFAULT: {
             value: {
-              _light: '{colors.white}',
+              _light: '#e5e5e5',
               _dark: '#2f2f2f',
             },
           },

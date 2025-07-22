@@ -29,15 +29,17 @@ export type Game = {
     slug: string;
   } | null;
   platforms: {
-    platform: {
-      id: number;
-      name: string;
-      slug: string;
-    };
+    platform: Platform;
     released_at?: string;
     requirements?: {
       minimum?: string;
       recommended?: string;
     };
   }[];
+};
+
+export type Platform = {
+  id: number;
+  name: string;
+  slug: string;
 };
