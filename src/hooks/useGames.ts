@@ -1,14 +1,14 @@
 import { routes } from '@/routes';
-import { type GamesResponse } from '@/types/games';
 import type { GameQuery } from '@/App';
 import { useQuery } from '@tanstack/react-query';
-import apiClient from '@/services/api-client';
+import { apiClient } from '@/services/api-client';
+import { type GamesResponse } from '@/types/games';
 
 export const useGames = (gameQuery: GameQuery) =>
   useQuery({
     queryKey: ['games', gameQuery],
     queryFn: async () => {
-      const response = await apiClient.get<GamesResponse>(routes.games, {
+      return apiClient.getAll<GamesResponse>(routes.games, {
         params: {
           genres: gameQuery.genre?.id,
           platforms: gameQuery.platform?.id,
@@ -16,7 +16,5 @@ export const useGames = (gameQuery: GameQuery) =>
           search: gameQuery.searchText,
         },
       });
-
-      return response.data;
     },
   });
