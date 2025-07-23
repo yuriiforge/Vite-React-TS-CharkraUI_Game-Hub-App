@@ -1,18 +1,13 @@
 import { usePlatform } from '@/hooks/usePlatform';
 import { usePlatforms } from '@/hooks/usePlatforms';
-import type { Platform } from '@/types/games';
+import useGameQueryStore from '@/store';
 import { Button, Menu, Portal } from '@chakra-ui/react';
 import { HiCog } from 'react-icons/hi';
 
-interface PlatformSelectorProps {
-  onSelectPlatform: (platform: Platform | null) => void;
-  selectedPlatformId?: number;
-}
+const Platformselector = () => {
+  const selectedPlatformId = useGameQueryStore((s) => s.gameQuery.platformId);
+  const setSelectedPlatformId = useGameQueryStore((s) => s.setPlatformId);
 
-const Platformselector = ({
-  onSelectPlatform,
-  selectedPlatformId,
-}: PlatformSelectorProps) => {
   const { data: platforms, error } = usePlatforms();
 
   const selectedPlatform = usePlatform(selectedPlatformId);
@@ -33,7 +28,7 @@ const Platformselector = ({
               <Menu.Item
                 key={platform.id}
                 value={platform.name}
-                onClick={() => onSelectPlatform(platform)}
+                onClick={() => setSelectedPlatformId(platform.id)}
               >
                 {platform.name}
               </Menu.Item>
