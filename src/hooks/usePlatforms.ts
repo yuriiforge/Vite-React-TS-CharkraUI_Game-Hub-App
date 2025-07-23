@@ -3,12 +3,14 @@ import { routes } from '@/routes';
 import { useQuery } from '@tanstack/react-query';
 import { apiClient } from '@/services/api-client';
 import { type ApiResponse } from '@/types/apiResponse';
+import { queryConfig } from '@/config/queryConfig';
+import { queryKeys } from '@/config/queryKeys';
 
 export const usePlatforms = () =>
   useQuery({
-    queryKey: ['platforms'],
+    queryKey: queryKeys.platforms,
     queryFn: async () => {
       return apiClient.getAll<ApiResponse<Platform>>(routes.platforms);
     },
-    staleTime: 24 * 60 * 60 * 1000,
+    staleTime: queryConfig.staleTime,
   });

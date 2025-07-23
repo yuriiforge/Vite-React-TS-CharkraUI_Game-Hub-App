@@ -3,10 +3,12 @@ import type { GameQuery } from '@/App';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { apiClient } from '@/services/api-client';
 import { type GamesResponse } from '@/types/games';
+import { queryConfig } from '@/config/queryConfig';
+import { queryKeys } from '@/config/queryKeys';
 
 export const useGames = (gameQuery: GameQuery) =>
   useInfiniteQuery({
-    queryKey: ['games', gameQuery],
+    queryKey: queryKeys.games(gameQuery),
     initialPageParam: 1,
     queryFn: async ({ pageParam = 1 }) => {
       return apiClient.getAll<GamesResponse>(routes.games, {
@@ -22,5 +24,5 @@ export const useGames = (gameQuery: GameQuery) =>
     getNextPageParam: (lastPage, allPages) => {
       return lastPage.next ? allPages.length + 1 : undefined;
     },
-    staleTime: 24 * 60 * 60 * 1000,
+    staleTime: queryConfig.staleTime,
   });
