@@ -26,7 +26,7 @@ const Platformselector = ({
       <Portal>
         <Menu.Positioner>
           <Menu.Content>
-            {platforms?.map((platform) => (
+            {platforms?.results.map((platform) => (
               <Menu.Item
                 key={platform.id}
                 value={platform.name}
