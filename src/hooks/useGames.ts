@@ -11,8 +11,8 @@ export const useGames = (gameQuery: GameQuery) =>
     queryFn: async ({ pageParam = 1 }) => {
       return apiClient.getAll<GamesResponse>(routes.games, {
         params: {
-          genres: gameQuery.genre?.id,
-          platforms: gameQuery.platform?.id,
+          genres: gameQuery.genreId,
+          platforms: gameQuery.platformId,
           ordering: gameQuery.sortOrder,
           search: gameQuery.searchText,
           page: pageParam,

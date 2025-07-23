@@ -5,14 +5,17 @@ import { HiCog } from 'react-icons/hi';
 
 interface PlatformSelectorProps {
   onSelectPlatform: (platform: Platform | null) => void;
-  selectedPlatform: Platform | null;
+  selectedPlatformId?: number;
 }
 
 const Platformselector = ({
   onSelectPlatform,
-  selectedPlatform,
+  selectedPlatformId,
 }: PlatformSelectorProps) => {
   const { data: platforms, error } = usePlatforms();
+  const selectedPlatform = platforms?.results.find(
+    (p) => p.id === selectedPlatformId
+  );
 
   if (error) return null;
 
@@ -20,7 +23,7 @@ const Platformselector = ({
     <Menu.Root>
       <Menu.Trigger asChild>
         <Button variant="surface" size="lg">
-          <HiCog /> {selectedPlatform ? selectedPlatform.name : 'Platforms'} ▼
+          <HiCog /> {selectedPlatform?.name || 'Platforms'} ▼
         </Button>
       </Menu.Trigger>
       <Portal>
