@@ -1,3 +1,4 @@
+import { usePlatform } from '@/hooks/usePlatform';
 import { usePlatforms } from '@/hooks/usePlatforms';
 import type { Platform } from '@/types/games';
 import { Button, Menu, Portal } from '@chakra-ui/react';
@@ -13,9 +14,8 @@ const Platformselector = ({
   selectedPlatformId,
 }: PlatformSelectorProps) => {
   const { data: platforms, error } = usePlatforms();
-  const selectedPlatform = platforms?.results.find(
-    (p) => p.id === selectedPlatformId
-  );
+
+  const selectedPlatform = usePlatform(selectedPlatformId);
 
   if (error) return null;
 
