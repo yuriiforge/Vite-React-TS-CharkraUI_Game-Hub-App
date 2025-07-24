@@ -1,7 +1,7 @@
 export const routes = {
   base: '/',
   games: '/games',
-  gamesId: '/games/:id',
+  gamesSlug: '/games/:slug',
   genres: '/genres',
   platforms: '/platforms/lists/parents',
 } as const;

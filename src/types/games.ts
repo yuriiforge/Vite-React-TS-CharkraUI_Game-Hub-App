@@ -9,6 +9,7 @@ export type Game = {
   released: string;
   tba: boolean;
   background_image: string;
+  description_raw: string;
   rating: number;
   rating_top: number;
   ratings: Record<string, unknown>;

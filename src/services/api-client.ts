@@ -13,6 +13,11 @@ class ApiClient {
     const response = await axiosInstance.get<T>(route, config);
     return response.data;
   }
+
+  async getOne<T>(route: string): Promise<T> {
+    const response = await axiosInstance.get<T>(route);
+    return response.data;
+  }
 }
 
 export const apiClient = new ApiClient();
