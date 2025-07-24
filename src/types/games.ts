@@ -1,4 +1,6 @@
 import type { ApiResponse } from './apiResponse';
+import type { Genre } from './genres';
+import type { Publisher } from './publisher';
 
 export type GamesResponse = ApiResponse<Game>;
 
@@ -10,6 +12,8 @@ export type Game = {
   tba: boolean;
   background_image: string;
   description_raw: string;
+  genres: Genre[];
+  publishers: Publisher[];
   rating: number;
   rating_top: number;
   ratings: Record<string, unknown>;
