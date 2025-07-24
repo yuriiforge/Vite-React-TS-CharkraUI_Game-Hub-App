@@ -1,4 +1,4 @@
-import { useScreenshots } from '@/hooks/useScreenShots';
+import { useScreenshots } from '@/hooks/useScreenshots';
 import { Image, SimpleGrid, Spinner } from '@chakra-ui/react';
 
 interface GameScreenshotsProps {
