@@ -10,17 +10,36 @@ A video game discovery platform inspired by RAWG, built with modern web technolo
   - 🎚️ Filters by genre/platform
   - 🔤 Search by game name
   - 🔄 Sorting by relevance/date/rating
+- 🎥 **Game Trailers** – Watch available trailers for selected games
 - 📱 **Responsive Design**: Works on all screen sizes
 
 ## 🛠️ Technologies Used
 
-- **TypeScript** - Strongly typed JavaScript
-- **npm** - Package manager
-- **React** - Frontend library
-- **Vite** - Build tool & dev server
-- **Prettier/ESLint** - Code formatting & linting
-- **Chakra UI** - Component library
-- **Axios** - HTTP client
+### ⚛️ Frontend Stack
+
+- **TypeScript** – Static typing for safety and clarity
+- **React** – Declarative UI library
+- **Vite** – Lightning-fast build and dev server
+- **Chakra UI** – Accessible and customizable component library
+
+### 📦 State & Data Management
+
+- **Zustand** – Lightweight global state for game filters (genre, platform, sort order)
+- **React Query** – Powerful asynchronous state for fetching, caching, and syncing API data
+
+### 🌐 Routing
+
+- **React Router** – Client-side routing for clean navigation and dynamic game detail pages
+
+### 📡 API & Network
+
+- **Axios** – Promise-based HTTP client
+- **RAWG API** – Game metadata, screenshots, platforms, and trailers
+
+### 🧹 Code Quality
+
+- **ESLint** – Linting and static code analysis
+- **Prettier** – Code formatting for consistent style
 
 ## 🚀 Installation & Usage
 
