@@ -24,20 +24,46 @@ const GenreList = () => {
       <Heading fontSize="3xl" mb={4}>
         Genres
       </Heading>
-      <List.Root>
+      <List.Root bg="blackAlpha.400" rounded="md">
         {genres?.results.map((genre) => (
-          <List.Item key={genre.id} paddingY="5px" listStyleType="none">
-            <HStack>
+          <List.Item
+            key={genre.id}
+            paddingY="5px"
+            listStyleType="none"
+            onClick={() => setSelectedGenreId(genre.id)}
+          >
+            <HStack
+              cursor="pointer"
+              transition="all 0.2s"
+              w="100%"
+              maxW="100%"
+              alignItems="flex-start"
+              paddingLeft={2}
+            >
               <Image
                 src={getCroppedImageUrl(genre.image_background)}
                 boxSize="32px"
                 borderRadius={8}
+                flexShrink={0}
               />
               <Button
                 fontWeight={genre.id === selectedGenreId ? 'bold' : 'normal'}
+                bg={
+                  genre.id === selectedGenreId
+                    ? 'blackAlpha.600'
+                    : 'transparent'
+                }
                 variant="ghost"
                 fontSize="large"
-                onClick={() => setSelectedGenreId(genre.id)}
+                whiteSpace="normal"
+                textAlign="left"
+                wordBreak="break-word"
+                overflow="hidden"
+                textOverflow="ellipsis"
+                _hover={{ bg: 'blackAlpha.400' }}
+                w="calc(100% - 40px)"
+                px={2}
+                py={1}
               >
                 {genre.name}
               </Button>
