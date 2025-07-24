@@ -6,18 +6,16 @@ interface GameTrailerProps {
 
 const GameTrailer = ({ gameId }: GameTrailerProps) => {
   const { data, error, isLoading } = useTrailers(gameId);
-  console.log(data);
+
   if (isLoading) return null;
 
-  if (error) throw error;
+  if (error) return null;
 
-  return (
-    <video
-      src={data?.results[0].data[480]}
-      poster={data?.results[0].preview}
-      controls
-    />
-  );
+  const trailer = data?.results?.[0];
+
+  if (!trailer || !trailer.data?.[480]) return null;
+
+  return <video src={trailer.data[480]} poster={trailer.preview} controls />;
 };
 
 export default GameTrailer;

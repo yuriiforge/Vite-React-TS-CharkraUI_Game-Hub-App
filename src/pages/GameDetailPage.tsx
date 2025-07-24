@@ -3,7 +3,7 @@ import GameAttributes from '@/components/games/GameAttributes';
 import GameScreenshots from '@/components/games/GameScreenshots';
 import GameTrailer from '@/components/games/GameTrailer';
 import { useGame } from '@/hooks/useGame';
-import { Heading, Spinner } from '@chakra-ui/react';
+import { GridItem, Heading, SimpleGrid, Spinner } from '@chakra-ui/react';
 import { useParams } from 'react-router';
 
 const GameDetailPage = () => {
@@ -18,13 +18,25 @@ const GameDetailPage = () => {
   if (!game) return null;
 
   return (
-    <>
-      <Heading>{game?.name}</Heading>
-      <ExpandableText>{game?.description_raw}</ExpandableText>
-      <GameAttributes game={game} />
-      <GameTrailer gameId={game.id} />
-      <GameScreenshots gameId={game.id} />
-    </>
+    <SimpleGrid
+      columns={{
+        base: 1,
+        md: 2,
+      }}
+      gap={4}
+    >
+      <GridItem>
+        <Heading fontSize="5xl" marginBottom={4}>
+          {game?.name}
+        </Heading>
+        <ExpandableText>{game?.description_raw}</ExpandableText>
+        <GameAttributes game={game} />
+      </GridItem>
+      <GridItem>
+        <GameTrailer gameId={game.id} />
+        <GameScreenshots gameId={game.id} />
+      </GridItem>
+    </SimpleGrid>
   );
 };
 
