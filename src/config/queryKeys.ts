@@ -3,4 +3,5 @@ export const queryKeys = {
   platforms: ['platforms'],
   games: (filters?: unknown) => ['games', filters],
   trailers: ['trailers'],
+  screenshots: ['screenshots'],
 };

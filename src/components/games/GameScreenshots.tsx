@@ -1,0 +1,29 @@
+import { useScreenshots } from '@/hooks/useScreenShots';
+import { Image, SimpleGrid, Spinner } from '@chakra-ui/react';
+
+interface GameScreenshotsProps {
+  gameId: number;
+}
+
+const GameScreenshots = ({ gameId }: GameScreenshotsProps) => {
+  const { data, isLoading, error } = useScreenshots(gameId);
+
+  if (isLoading) return <Spinner />;
+
+  if (error) throw error;
+  return (
+    <SimpleGrid
+      columns={{
+        base: 1,
+        md: 2,
+      }}
+      gap={2}
+    >
+      {data?.results.map((file) => (
+        <Image key={file.id} src={file.image} alt={file.image} />
+      ))}
+    </SimpleGrid>
+  );
+};
+
+export default GameScreenshots;
