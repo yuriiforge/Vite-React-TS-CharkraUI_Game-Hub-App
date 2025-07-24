@@ -1,4 +1,3 @@
-import type { RoutePath } from '@/routes';
 import axios, { type AxiosRequestConfig } from 'axios';
 
 const axiosInstance = axios.create({
@@ -9,7 +8,7 @@ const axiosInstance = axios.create({
 });
 
 class ApiClient {
-  async getAll<T>(route: RoutePath, config?: AxiosRequestConfig): Promise<T> {
+  async getAll<T>(route: string, config?: AxiosRequestConfig): Promise<T> {
     const response = await axiosInstance.get<T>(route, config);
     return response.data;
   }

@@ -4,6 +4,7 @@ export const routes = {
   gamesSlug: '/games/:slug',
   genres: '/genres',
   platforms: '/platforms/lists/parents',
+  trailers: '/games/:id/movies',
 } as const;
 
 export type RoutePath = (typeof routes)[keyof typeof routes];
